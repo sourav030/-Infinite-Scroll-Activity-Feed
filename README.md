@@ -43,7 +43,7 @@ project-root/
 
 ⚙️ Installation & Setup
 1️⃣ Clone the repository
-git clone https://github.com/your-username/your-repo-name.git
+git clone https://github.com/sourav030/-Infinite-Scroll-Activity-Feed
 
 cd your-repo-name
 2️⃣ Setup Backend
@@ -90,5 +90,5 @@ Reactive state management using ref()
 
 👨‍💻 Author
 Sourav Kumar Tiwari
-GitHub: https://github.com/sourav030/-Infinite-Scroll-Activity-Feed
+GitHub: https://github.com/sourav030
 
