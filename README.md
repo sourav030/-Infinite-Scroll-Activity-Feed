@@ -1,6 +1,5 @@
-📌 Infinite Scroll Activity Feed
-
-A high-performance activity feed built using Vue.js, Node.js, Express, and MongoDB with cursor-based pagination and smooth infinite scrolling.
+Infinite Scroll Activity Feed
+A high-performance activity feed built with Vue 3, Node.js, and MongoDB. This project demonstrates an optimized "Social Media" style feed using cursor-based pagination to ensure smooth performance even with large datasets.
 
 🚀 Features
 🔄 Infinite Scroll (auto-load next data on scroll)
@@ -9,6 +8,22 @@ A high-performance activity feed built using Vue.js, Node.js, Express, and Mongo
 ⏳ Loading state during API calls
 🧹 Proper cleanup using lifecycle hooks
 🗄️ MongoDB with seeded mock data (50+ records)
+
+
+.
+
+🚀 Key Features
+🔄 Infinite Scroll: Seamlessly auto-loads new content as the user reaches the bottom.
+
+⚡ Cursor-based Pagination: Uses lastId logic for superior performance over traditional offset-based systems.
+
+⏳ State Management: Robust handling of loading states, empty results, and "end of feed" indicators.
+
+🧹 Memory Management: Automatic cleanup of scroll event listeners using Vue lifecycle hooks to prevent memory leaks.
+
+🗄️ Pre-seeded Data: Includes a script to populate MongoDB with 50+ mock activity records.
+
+
 🛠️ Tech Stack
 Frontend
 Vue 3 (Composition API)
@@ -18,15 +33,18 @@ Node.js
 Express.js
 Database
 MongoDB
+
 📂 Project Structure
 project-root/
 │
 ├── frontend/        # Vue app
 ├── backend/         # Express server
 └── README.md
+
 ⚙️ Installation & Setup
 1️⃣ Clone the repository
 git clone https://github.com/your-username/your-repo-name.git
+
 cd your-repo-name
 2️⃣ Setup Backend
 cd backend
@@ -46,11 +64,15 @@ http://localhost:5173 (or Vite default)
 
 🔗 API Endpoint
 Get Posts (Paginated)
+
 GET /api/v1/posts?lastId=<ID>&limit=10
+
 Query Params:
 Param	Description
 lastId	Last fetched item ID (for pagination)
 limit	Number of items per request
+
+
 🔄 How Infinite Scroll Works
 Initial load fetches first 50 posts
 When user scrolls near bottom → next API call
