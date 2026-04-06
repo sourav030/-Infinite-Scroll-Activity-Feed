@@ -7,7 +7,7 @@ mongoose.connect('mongodb://127.0.0.1:27017/infiniteScroll')
   .catch(err => console.log(err));
 
 
-const users = ["Rahul", "Aman", "Priya", "Neha", "Arjun", "Simran", "Karan"];
+const users = ["Rahul", "Aman", "sourav", "vickey", "Arjun", "Rupesh", "Karan"];
 const titles = [
   "How I learned Node.js in 30 days",
   "MongoDB tips you should know",
@@ -38,7 +38,7 @@ const tagsList = [
 const generatePosts = () => {
   const posts = [];
 
-  for (let i = 0; i < 500; i++) {
+  for (let i = 0; i < 100; i++) {
     posts.push({
       userName: users[Math.floor(Math.random() * users.length)],
       title: titles[Math.floor(Math.random() * titles.length)],

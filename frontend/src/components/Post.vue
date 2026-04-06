@@ -1,12 +1,8 @@
 <script setup>
-const props = defineProps({
-  post: {
-    type: Object,
-    required: true
-  }
+defineProps({
+  post: Object
 });
 
-// Helper to format date
 const formatDate = (dateStr) => {
   return new Date(dateStr).toLocaleDateString('en-US', {
     month: 'long',
@@ -16,33 +12,52 @@ const formatDate = (dateStr) => {
 </script>
 
 <template>
-  <div class="max-w-md mx-auto my-8 overflow-hidden bg-white border border-slate-200 rounded-xl shadow-sm hover:shadow-md transition-shadow">
-    <div class="p-6">
-      <div class="flex justify-between items-center mb-4">
-        <h2 class="text-sm font-semibold text-indigo-600 uppercase tracking-wide">
+  <article class="post-card">
+    <div class="post-card__body">
+      <div class="flex justify-between mb-2">
+        <h2 class="text-sm font-semibold text-indigo-600">
           {{ post.userName }}
         </h2>
-        <p class="text-xs text-slate-500">
-          Created: {{ formatDate(post.createdAt) }}
+        <p class="text-xs text-gray-500">
+          {{ formatDate(post.createdAt) }}
         </p>
       </div>
 
-      <h2 class="text-2xl font-bold text-slate-900 mb-2">
+      <h2 class="text-lg font-bold mb-2">
         {{ post.title }}
       </h2>
-      <p class="text-slate-600 leading-relaxed mb-6">
+
+      <p class="text-gray-600 mb-3">
         {{ post.description }}
       </p>
 
       <div class="flex flex-wrap gap-2">
-        <span 
-          v-for="tag in post.tags" 
+        <span
+          v-for="tag in post.tags"
           :key="tag"
-          class="px-3 py-1 text-sm font-medium text-slate-700 bg-slate-100 rounded-full"
+          class="px-2 py-1 text-xs bg-gray-100 rounded"
         >
           {{ tag }}
         </span>
       </div>
+
     </div>
-  </div>
+  </article>
 </template>
+
+<style scoped>
+.post-card {
+  width: 100%;
+  height: 100%;
+  transition: all 0.3s ease;
+}
+
+.post-card__body {
+  height: 100%;
+  padding: 1rem;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 1rem;
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.08);
+}
+</style>

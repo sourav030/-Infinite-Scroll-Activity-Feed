@@ -35,35 +35,38 @@ const createPost = async (req, res) => {
 };
 
 
-
 const getPosts = async (req, res) => {
   try {
-    const { lastId, limit = 10 } = req.query;
-
+    const { lastId, limit = 50 } = req.query;
+    const parsedLimit = parseInt(limit);
     let query = {};
 
-    
     if (lastId) {
       query._id = { $lt: lastId };
     }
 
+    // Ek extra item mangwao check karne ke liye
     const posts = await Post.find(query)
       .sort({ _id: -1 }) 
-      .limit(parseInt(limit));
+      .limit(parsedLimit + 1);
+
+    // Agar posts ki length limit se zyada hai, matlab aage aur data hai
+    const hasMore = posts.length > parsedLimit;
+    
+    // Extra item ko response se hata do
+    const data = hasMore ? posts.slice(0, -1) : posts;
 
     res.status(200).json({
       success: true,
-      data: posts,
-      hasMore: posts.length === parseInt(limit),
+      data: data,
+      hasMore: hasMore,
     });
 
   } catch (error) {
-    console.log(error);
-    res.status(500).json({
-      message: "Server Side Error"
-    });
+    res.status(500).json({ message: "Server Side Error" });
   }
 };
+
 
 
 module.exports = { createPost ,getPosts};

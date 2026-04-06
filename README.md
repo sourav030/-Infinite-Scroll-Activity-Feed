@@ -1,17 +1,6 @@
 Infinite Scroll Activity Feed
 A high-performance activity feed built with Vue 3, Node.js, and MongoDB. This project demonstrates an optimized "Social Media" style feed using cursor-based pagination to ensure smooth performance even with large datasets.
 
-🚀 Features
-🔄 Infinite Scroll (auto-load next data on scroll)
-⚡ Cursor-based Pagination (lastId, limit)
-📦 Efficient handling of large datasets
-⏳ Loading state during API calls
-🧹 Proper cleanup using lifecycle hooks
-🗄️ MongoDB with seeded mock data (50+ records)
-
-
-.
-
 🚀 Key Features
 🔄 Infinite Scroll: Seamlessly auto-loads new content as the user reaches the bottom.
 
@@ -34,12 +23,15 @@ Express.js
 Database
 MongoDB
 
+
+
 📂 Project Structure
 project-root/
 │
 ├── frontend/        # Vue app
 ├── backend/         # Express server
 └── README.md
+
 
 ⚙️ Installation & Setup
 1️⃣ Clone the repository
@@ -92,3 +84,12 @@ Reactive state management using ref()
 Sourav Kumar Tiwari
 GitHub: https://github.com/sourav030
 
+
+Hello Sir 👋
+
+I’ve completed the **Infinite Scroll Activity Feed** assignment.
+Here is the Git repo: https://github.com/sourav030/-Infinite-Scroll-Activity-Feed
+
+Please take a look when you have time and let me know if any feedback or changes are needed.
+
+Thanks!
