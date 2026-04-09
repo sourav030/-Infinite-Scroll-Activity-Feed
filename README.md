@@ -1,95 +1,132 @@
-Infinite Scroll Activity Feed
-A high-performance activity feed built with Vue 3, Node.js, and MongoDB. This project demonstrates an optimized "Social Media" style feed using cursor-based pagination to ensure smooth performance even with large datasets.
+# Infinite Scroll Activity Feed
 
-🚀 Key Features
-🔄 Infinite Scroll: Seamlessly auto-loads new content as the user reaches the bottom.
+A full-stack activity feed built with Vue 3, Express, and MongoDB.
+The feed uses cursor-based pagination with virtualization for smooth scrolling performance on large datasets.
 
-⚡ Cursor-based Pagination: Uses lastId logic for superior performance over traditional offset-based systems.
+## Features
 
-⏳ State Management: Robust handling of loading states, empty results, and "end of feed" indicators.
+- Infinite scrolling feed with incremental loading
+- Cursor-based pagination using lastId instead of offset
+- Virtualized rendering using vue-virtual-scroller
+- Toggle between row and grid layouts
+- Loading and end-of-feed UI states
+- Seed script for generating realistic mock posts
 
-🧹 Memory Management: Automatic cleanup of scroll event listeners using Vue lifecycle hooks to prevent memory leaks.
+## Tech Stack
 
-🗄️ Pre-seeded Data: Includes a script to populate MongoDB with 50+ mock activity records.
+- Frontend: Vue 3, Vite, Axios, vue-virtual-scroller
+- Backend: Node.js, Express, Mongoose
+- Database: MongoDB
 
+## Project Structure
 
-🛠️ Tech Stack
-Frontend
-Vue 3 (Composition API)
-Axios
-Backend
-Node.js
-Express.js
-Database
-MongoDB
+Assignment2/
+- frontend/
+- server/
+- README.md
 
+## Prerequisites
 
+- Node.js 18+
+- npm
+- MongoDB running locally (or a valid MongoDB URI)
 
-📂 Project Structure
-project-root/
-│
-├── frontend/        # Vue app
-├── backend/         # Express server
-└── README.md
+## Backend Setup
 
+1. Go to the server folder:
 
-⚙️ Installation & Setup
-1️⃣ Clone the repository
-git clone https://github.com/sourav030/-Infinite-Scroll-Activity-Feed
+	cd server
 
-cd your-repo-name
-2️⃣ Setup Backend
-cd backend
-npm install
-npm run dev
+2. Install dependencies:
 
-👉 Server runs on:
+	npm install
+
+3. Create a .env file in server/ with:
+
+	MONGO_URI=mongodb://127.0.0.1:27017/infiniteScroll
+	PORT=3000
+
+4. Optional: seed sample data:
+
+	node seed.js
+
+5. Start backend:
+
+	npm run dev
+
+Backend base URL:
 http://localhost:3000
 
-3️⃣ Setup Frontend
-cd frontend
-npm install
-npm run dev
+## Frontend Setup
 
-👉 App runs on:
-http://localhost:5173 (or Vite default)
+1. Open a new terminal and go to frontend:
 
-🔗 API Endpoint
-Get Posts (Paginated)
+	cd frontend
 
-GET /api/v1/posts?lastId=<ID>&limit=10
+2. Install dependencies:
 
-Query Params:
-Param	Description
-lastId	Last fetched item ID (for pagination)
-limit	Number of items per request
+	npm install
 
+3. Start frontend:
 
-🔄 How Infinite Scroll Works
-Initial load fetches first 50 posts
-When user scrolls near bottom → next API call
-lastId updates with last fetched post
-New posts appended to existing list
-Stops when hasMore = false
+	npm run dev
 
-🧠 Key Concepts Used
-Cursor-based pagination (better than offset for performance)
-Scroll event handling
-Vue lifecycle hooks:
-onMounted → start fetching & add scroll listener
-onUnmounted → cleanup event listeners
-Reactive state management using ref()
+Frontend URL (default Vite):
+http://localhost:5173
 
-👨‍💻 Author
-Sourav Kumar Tiwari
-GitHub: https://github.com/sourav030
+## API Reference
 
+### Get Posts
 
-Hello Sir 👋
+- Method: GET
+- Route: /api/v1/posts
+- Query Params:
+  - lastId (optional): last fetched post id for cursor pagination
+  - limit (optional, default 50): number of posts to fetch
 
-I’ve completed the **Infinite Scroll Activity Feed** assignment.
-Here is the Git repo: https://github.com/sourav030/-Infinite-Scroll-Activity-Feed
+Example:
+/api/v1/posts?lastId=67f89abc1234def56789abcd&limit=50
 
-Please take a look when you have time and let me know if any feedback or changes are needed.
+Response shape:
 
-Thanks!
+{
+  "success": true,
+  "data": [
+	 {
+		"_id": "...",
+		"userName": "Rahul",
+		"title": "How I learned Node.js in 30 days",
+		"description": "...",
+		"tags": ["nodejs", "backend"],
+		"createdAt": "...",
+		"updatedAt": "..."
+	 }
+  ],
+  "hasMore": true
+}
+
+### Create Post
+
+- Method: POST
+- Route: /api/v1/createpost
+- Required body fields: userName, title, description
+- Optional body field: tags
+
+## Notes
+
+- The frontend currently requests posts from http://localhost:3000/api/v1/posts.
+- Keep PORT=3000 on backend unless you also update the frontend API URL.
+- The seed script uses mongodb://127.0.0.1:27017/infiniteScroll directly.
+
+## Available Scripts
+
+### server/package.json
+
+- npm run dev: start backend with nodemon
+- npm start: start backend with node
+
+### frontend/package.json
+
+- npm run dev: start Vite dev server
+- npm run build: production build
+- npm run preview: preview production build

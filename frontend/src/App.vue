@@ -98,6 +98,7 @@ onBeforeUnmount(() => {
     </RecycleScroller>
 
     <div v-if="loading" class="loading-state">Loading...</div>
+    <div v-if="!hasMore">No More Post</div>
   </div>
 </template>
 
